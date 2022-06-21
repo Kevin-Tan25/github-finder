@@ -1,12 +1,14 @@
 import React from 'react';
+import UserResults from '../components/users/UserResults';
 
 function Home() {
   return (
-    <div>
-      <h1 className='text-6xl text-primary-content'>Welcome</h1>
+    <>
+      {/* Search Component */}
+      <UserResults />
       {/* {process.env.REACT_APP_GITHUB_TOKEN} */}
       {/* CAN ACCESS ENV VARIABLES (GLOBAL) */}
-    </div>
+    </>
   );
 }
 
