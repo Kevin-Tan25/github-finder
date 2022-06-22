@@ -12,7 +12,7 @@ function UserResults() {
   const fetchUsers = async () => {
     const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users`, {
       headers: {
-        Authorization: `${process.env.REACT_APP_GITHUB_TOKEN}`,
+        Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
       },
     });
     const data = await response.json();
