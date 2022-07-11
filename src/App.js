@@ -4,25 +4,29 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import About from './pages/About';
+import { GithubProvider } from './context/github/GithubContext';
 
 function App() {
   return (
-    <Router>
-      <div className='flex flex-col justify-between h-screen'>
-        <Navbar />
-        <main className='container mx-auto px-3 pb-12 text-primary-content'>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/notfound' element={<NotFound />} />
-            <Route path='/*' element={<NotFound />} />
-            {/* Catch all got all other options */}
-          </Routes>
-        </main>
+    <GithubProvider>
+      {/* the contexthook has access to the data of all the children classes */}
+      <Router>
+        <div className='flex flex-col justify-between h-screen'>
+          <Navbar />
+          <main className='container mx-auto px-3 pb-12 text-primary-content'>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/notfound' element={<NotFound />} />
+              <Route path='/*' element={<NotFound />} />
+              {/* Catch all got all other options */}
+            </Routes>
+          </main>
 
-        <Footer />
-      </div>
-    </Router>
+          <Footer />
+        </div>
+      </Router>
+    </GithubProvider>
   );
 }
 
