@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function UserItem({ user }) {
-  return <div>{user.login}</div>;
+function UserItem({ user: { login, avatar_url } }) {
+  return <div>{login}</div>;
 }
 
 UserItem.propTypes = {
