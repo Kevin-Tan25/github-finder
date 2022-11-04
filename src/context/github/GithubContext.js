@@ -4,7 +4,7 @@ import githubReducer from './GithubReducer';
 const GithubContext = createContext();
 
 const GITHUB_URL = process.env.REACT_APP_GITHUB_URL;
-const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+// const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
 // Children is whatever we are surrounding provider with
 // This is what GIVES you the data
@@ -15,17 +15,30 @@ export const GithubProvider = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(githubReducer, initialState);
-  const fetchUsers = async () => {
+
+  // Get search results
+  const searchUsers = async (text) => {
     setLoading();
-    const response = await fetch(`${GITHUB_URL}/users`, {
+
+    const params = new URLSearchParams({
+      q: text,
+    });
+
+    // Query params
+    const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {
       // headers: {
       //   Authorization: `token ${GITHUB_TOKEN}`,
       // },
     });
-    const data = await response.json();
+
+    // returns data
+    // const data = await response.json();
+
+    // returns items by destructuring
+    const { items } = await response.json();
     dispatch({
       type: 'GET_USERS',
-      payload: data,
+      payload: items,
     });
   };
   const setLoading = () => dispatch({ type: 'SET_LOADING' });
@@ -36,7 +49,7 @@ export const GithubProvider = ({ children }) => {
         //   state is now an object that is shared
         users: state.users,
         loading: state.loading,
-        fetchUsers,
+        searchUsers,
       }}
     >
       {/* anything state that needs to get passed to components are done here */}
