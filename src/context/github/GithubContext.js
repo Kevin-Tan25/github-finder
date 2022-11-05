@@ -41,7 +41,10 @@ export const GithubProvider = ({ children }) => {
       payload: items,
     });
   };
+
   const setLoading = () => dispatch({ type: 'SET_LOADING' });
+
+  const clearUsers = () => dispatch({ type: 'CLEAR_USERS' });
 
   return (
     <GithubContext.Provider
@@ -50,6 +53,7 @@ export const GithubProvider = ({ children }) => {
         users: state.users,
         loading: state.loading,
         searchUsers,
+        clearUsers,
       }}
     >
       {/* anything state that needs to get passed to components are done here */}
