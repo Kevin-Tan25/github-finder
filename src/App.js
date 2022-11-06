@@ -4,6 +4,7 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import About from './pages/About';
+import User from './pages/User';
 import { GithubProvider } from './context/github/GithubContext';
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />
+              {/* Dynamic routing */}
+              <Route path='/user/:login' element={<User />} />
               <Route path='/notfound' element={<NotFound />} />
               <Route path='/*' element={<NotFound />} />
               {/* Catch all got all other options */}
