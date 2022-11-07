@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 import { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -107,6 +108,35 @@ function User() {
                   <div className='text-lg-stat-value'>{twitter}</div>
                 </div>
               ) : null}
+            </div>
+          </div>
+        </div>
+        <div className='w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats'>
+          <div className='stat'>
+            <div className='stat-figure text-secondary'>
+              <FaUsers className='text-3xl md:text-5xl' />
+            </div>
+            <div className='stat-title pr-5'>Followers</div>
+            <div className='stat-value pr-5 text-3xl md:text-4xl'>
+              {followers}
+            </div>
+          </div>
+          <div className='stat'>
+            <div className='stat-figure text-secondary'>
+              <FaUserFriends className='text-3xl md:text-5xl' />
+            </div>
+            <div className='stat-title pr-5'>Following</div>
+            <div className='stat-value pr-5 text-3xl md:text-4xl'>
+              {following}
+            </div>
+          </div>
+          <div className='stat'>
+            <div className='stat-figure text-secondary'>
+              <FaCodepen className='text-3xl md:text-5xl' />
+            </div>
+            <div className='stat-title pr-5'>Public Repos</div>
+            <div className='stat-value pr-5 text-3xl md:text-4xl'>
+              {public_repos}
             </div>
           </div>
         </div>
