@@ -21,13 +21,14 @@ function User() {
     location,
     bio,
     blog,
-    twitter_username,
+    twitter_username: twitter,
     login,
     html_url,
     followers,
     following,
     public_repos,
     public_gists,
+    email,
     hireable,
   } = user;
 
@@ -50,19 +51,20 @@ function User() {
                 <img src={avatar_url} alt='' />
               </figure>
               <div className='card-body justify-end'>
-                <h2 className='card-title mb-0 text-white'>{name}</h2>
+                <h2 className='card-title mb-0'>{name}</h2>
                 <p className='flex-grow-0'>{login}</p>
               </div>
             </div>
           </div>
+
           <div className='col-span-2'>
             <div className='mb-6'>
               <h1 className='text-3xl card-title'>
                 {name}
                 <div className='ml-2 mr-1 badge badge-success'>{type}</div>
-                {hireable ? (
+                {hireable && (
                   <div className='mx-1 badge badge-info'>Hireable</div>
-                ) : null}
+                )}
               </h1>
               <p>{bio}</p>
               <div className='mt-4 card-actions'>
@@ -75,6 +77,36 @@ function User() {
                   Visit Github Profile
                 </a>
               </div>
+            </div>
+
+            <div className='w-full rounded-lg shadow-md bg-base-100 stats'>
+              {location ? (
+                <div className='stat'>
+                  <div className='stat-title text-md'>Location</div>
+                  <div className='text-lg-stat-value'>{location}</div>
+                </div>
+              ) : null}
+
+              {blog ? (
+                <div className='stat'>
+                  <div className='stat-title text-md'>Blog</div>
+                  <div className='text-lg-stat-value'>
+                    <a
+                      href={`https://${blog}`}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      {blog}
+                    </a>
+                  </div>
+                </div>
+              ) : null}
+              {twitter ? (
+                <div className='stat'>
+                  <div className='stat-title text-md'>Twitter</div>
+                  <div className='text-lg-stat-value'>{twitter}</div>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
