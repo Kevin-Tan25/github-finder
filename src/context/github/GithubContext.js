@@ -25,6 +25,8 @@ export const GithubProvider = ({ children }) => {
       q: text,
     });
 
+    console.log({ params });
+
     // Query params
     const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {
       // headers: {
@@ -32,8 +34,11 @@ export const GithubProvider = ({ children }) => {
       // },
     });
 
+    console.log(response);
+
     // returns items by destructuring
     const { items } = await response.json();
+    console.log(items);
     dispatch({
       type: 'GET_USERS',
       payload: items,
